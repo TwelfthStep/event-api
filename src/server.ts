@@ -15,6 +15,7 @@ global.mongoose = mongoose;
 
 // import * as braintreeController from './controllers/purchase/braintree';
 
+import * as subscriberController from './controllers/subscribers/subscriber';
 import * as mailchimpController from './controllers/marketing/mailchimp';
 
 import bodyParser from 'body-parser';
@@ -44,8 +45,8 @@ if(isDeploy('production')){
 /*
 Set up endpoints
 */
-// MARKETING
-app.post('/test', mailchimpController.testPostPleaseIgnore);
+// SUBSCRIBERS
+app.post('/subscribers', subscriberController.postSubscriber);
 
 
 /*

@@ -80,7 +80,7 @@ function createDateString(): mailchimp.TimeString {
  * from if unsuccessful.
  * @throws An `Error` if customer is already subscribed or the Mailchimp API failed.
  */
-async function subscribeMailchimpMember(email: string, ip: string){
+export async function subscribeMailchimpMember(email: string, ip: string){
   let list = await getMainList();
 
   let list_id = list.id;
@@ -111,7 +111,7 @@ async function subscribeMailchimpMember(email: string, ip: string){
       case 'forgotten email not subscribed':
         return `${list.subscribe_url_long}&EMAIL=${email.toLowerCase()}`;
       default:
-        throw new Error(`Failed to subscribe for an unknown reason: "${errorTitle}"`);
+        throw new Error(`Mailchimp error: ${errorTitle}. ${exception.response.body.detail}`);
     }
   }
 }
@@ -165,11 +165,4 @@ export async function safeSubscribeMailchimpMember(email: string, ip: string){
   catch(error){
     console.error(`Error when safely subscribing Mailchimp member:`, error);
   }
-}
-
-
-// TESTING
-
-export async function testPostPleaseIgnore(req: Request, res: Response){
-  res.send(req.body);
 }
