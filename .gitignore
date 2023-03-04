@@ -1,0 +1,13 @@
+# Build & testing
+dist/
+
+# Node dependencies
+node_modules/
+
+# Environment variables
+.env
+
+
+# in development
+/src/controllers/customers/
+/src/controllers/purchase/

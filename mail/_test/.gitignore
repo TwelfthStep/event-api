@@ -1,0 +1,5 @@
+# ./mail/_test is used in development as a way to write emails into .html files that we'd otherwise send to the customer
+# This prevents having to spam the Mailgun API when testing, and reduces risk of test code being sent to a real customer.
+
+*
+!.gitignore
